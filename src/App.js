@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import LoginPage from './components/pages/LoginPage';
 function App() {
+  // state (état, données)
+  //const [prenom, setPrenom] = useState("Ines") 
+  //const [count, setCount] = useState(1)
+
+  // comportements
+  // const handleClick = () => {
+  //   setCount(count + 1)
+  // }
+  // affichage
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Salut Inès</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <LoginPage/>
+  )
 }
 
 export default App;
