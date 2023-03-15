@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Input({ value, onChange, Icon, ...extraProps }) { // props // destructuring de props, ...restProps est un objet qui contient en propriétés placeholder de valeur "entrez votre prénom", required de valeur true ou false. 
+export default function TextInput({ value, onChange, Icon, ...extraProps }) { // props // destructuring de props, ...restProps est un objet qui contient en propriétés placeholder de valeur "entrez votre prénom", required de valeur true ou false. 
   return (
     <InputStyled>
         {Icon && Icon}
