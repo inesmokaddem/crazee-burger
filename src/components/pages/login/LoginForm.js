@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import { BsPersonCircle } from "react-icons/bs"
 import { theme } from '../../../theme'
 
 export default function LoginForm() {
@@ -27,12 +28,16 @@ export default function LoginForm() {
                 <hr/>
                 <h2>Connectez-vous</h2>
                 <div>
-                    <input 
-                        value={inputValue} 
-                        onChange={handleChange} 
-                        type="text" 
-                        placeholder='Entrez votre prénom' 
-                        required />
+                    <div className='input-with-icon'>
+                        <BsPersonCircle className='icon'/>
+                        <input 
+                            value={inputValue} 
+                            onChange={handleChange} 
+                            type="text" 
+                            placeholder='Entrez votre prénom' 
+                            required 
+                        />
+                    </div>
                     <button>Accéder à mon espace</button>
                 </div>
             </LoginFormStyled>
@@ -63,5 +68,33 @@ const LoginFormStyled = styled.div`
         margin: 20px 10px 10px;
         color: white;
         font-size: 36px;
+    }
+
+    .input-with-icon {
+        background-color: #fff;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 18px 24px;
+        margin: 18px 0;
+
+        .icon {
+            font-size: 15px;
+            margin-right: 8px;
+            color: #93a2b1;
+            min-width: 1em; // that way, the icon size is NOT affected
+        }
+        input {
+            border: none;
+            font-size: 15px;
+            color: #17161a;
+            width: 100%;
+            display: flex;
+        }
+
+        &::placeholder {
+            background: white;
+            color: lightgrey;
+        }
     }
 `;
