@@ -7,7 +7,6 @@ export default function TextInput({ value, onChange, Icon, ...extraProps }) { //
         <input onChange={onChange} type="text" {...extraProps} />
     </InputStyled>
   )
-  
 }
 
 const InputStyled = styled.div`
