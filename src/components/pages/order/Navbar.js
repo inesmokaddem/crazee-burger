@@ -1,17 +1,11 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import NavbarRigthSide from "./NavbarRigthSide";
 
 export default function Navbar({username}) {
   return (
     <NavbarStyled>
         <div className="left-side">left</div>
-        <div className="right-side">
-            Right
-            <h1>Hey, { username }</h1>
-            <Link to="/">
-                <button>Se déconnecter</button>
-            </Link>
-        </div>
+        <NavbarRigthSide username={username}/>
     </NavbarStyled>
   )
 }
@@ -22,11 +16,4 @@ const NavbarStyled = styled.nav`
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-
-    .left-side {
-        background: pink;
-    }
-    .right-side {
-        background: purple;
-    }
 `;
