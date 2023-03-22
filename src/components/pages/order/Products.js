@@ -29,11 +29,14 @@ const ProductsStyled = styled.div`
         width: 200px;
         height: 145px;
         margin: 0 auto;
+        margin-top: 50px;
 
         img {
             max-width: 100%;
-            height: auto;
+            max-height: 100%;
             object-fit: cover;
+            margin: 0 auto;
+            display: flex;
         }
     }
 
@@ -42,11 +45,11 @@ const ProductsStyled = styled.div`
         font-family: "Amatic SC", cursive;
         font-weight: ${theme.fonts.weights.bold};
         line-height: 45px;
-        margin-left: 25px;
         text-overflow: ellipsis;
         overflow: hidden; 
         width: 185px; 
         white-space: nowrap;
+        margin: 10px 0 10px 25px;
     }
     .product__infos{
         display: flex;
