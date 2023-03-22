@@ -20,7 +20,7 @@ export default function MenuCard(product) {
                     <p className='product__title'>{product.title}</p>
                     <div className='product__infos'>
                         <p className='product__price'>{product.price} €</p>
-                        <PrimaryButton label={"Ajouter"} />
+                        <PrimaryButton className="product__btn" label={"Ajouter"} />
                     </div>
                 </div>
             </div>
@@ -47,9 +47,11 @@ const MenuCardStyled = styled.div`
             width: 200px;
             height: 145px;
             margin: 0 auto;
+
             img {
                 width: 100%;
                 height: auto;
+                object-fit: cover;
             }
         }
 
@@ -59,16 +61,19 @@ const MenuCardStyled = styled.div`
             font-weight: ${theme.fonts.weights.bold};
             line-height: 45px;
             margin-left: 25px;
-            /* identical to box height */
-
-            display: flex;
-            align-items: center;
+            text-overflow: ellipsis;
+            overflow: hidden; 
+            width: 185px; 
+            white-space: nowrap;
         }
         .product__infos{
             display: flex;
             justify-content: space-around;
             .product__price {
                 color: ${theme.colors.primary};
+            }
+            .product__btn {
+                padding: 16px 24px;
             }
         }
     }
