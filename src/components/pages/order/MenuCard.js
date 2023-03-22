@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import { fakeMenu2 } from '../../../data/fakeMenu';
 import { theme } from '../../../theme';
-import PrimaryButton from '../../reusable-ui/PrimaryButton';
+import Products from './Products';
 
 export default function MenuCard(product) {
 
@@ -12,18 +12,7 @@ export default function MenuCard(product) {
     <MenuCardStyled>
         {products.map((product) => {
             return (
-            <div className='product'>
-                <div className='product__img'>
-                    <img src={product.imageSource} alt={product.title}></img>
-                </div>
-                <div className='product__description'>
-                    <p className='product__title'>{product.title}</p>
-                    <div className='product__infos'>
-                        <p className='product__price'>{product.price} €</p>
-                        <PrimaryButton className="product__btn" label={"Ajouter"} />
-                    </div>
-                </div>
-            </div>
+                <Products key={product.id} title={product.title} imageSource={product.imageSource} price={product.price}/>
             )
         })}
     </MenuCardStyled>
@@ -49,7 +38,7 @@ const MenuCardStyled = styled.div`
             margin: 0 auto;
 
             img {
-                width: 100%;
+                max-width: 100%;
                 height: auto;
                 object-fit: cover;
             }
