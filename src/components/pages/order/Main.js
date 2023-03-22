@@ -5,10 +5,7 @@ import MenuCard from "./MenuCard";
 
 export default function Main() {
   return <MainStyled>
-    <div className="basket">basket</div>
-    {/* {fakeMenu1.map(product => (
-      <MenuCard key={product.id} product={product}></MenuCard>
-    ))} */}
+    {/* <div className="basket">basket</div> */}
     <MenuCard/>
   </MainStyled>
 
