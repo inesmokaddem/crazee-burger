@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { fakeMenu1 } from "../../../data/fakeMenu";
 import { theme } from "../../../theme";
 import MenuCard from "./MenuCard";
 
