@@ -20,7 +20,7 @@ export default function Products({title, imageSource, price}) {
 }
 
 const ProductsStyled = styled.div`
-    border-radius: 15px;
+    border-radius: ${theme.borderRadius.extraRound};
     width: 240px;
     height: 330px;
     box-shadow: -8px 8px 20px rgba(0, 0, 0, 0.2);
