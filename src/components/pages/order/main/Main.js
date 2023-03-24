@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import MenuCard from "./MenuCard";
+import Menu from "./Menu";
 
 export default function Main() {
   return <MainStyled>
     {/* <div className="basket">basket</div> */}
-    <MenuCard/>
+    <Menu/>
   </MainStyled>
 
 }
