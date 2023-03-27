@@ -4,8 +4,8 @@ import PrimaryButton from "./PrimaryButton";
 
 export default function Products({ title, imageSource, leftDescription }) {
     return (
-      <CardStyled className="produit">
-        <div className="product__img">
+      <CardStyled>
+        <div className="product-img">
           <img src={imageSource} alt={title} />
         </div>
         <div className="text-info">
@@ -33,7 +33,7 @@ const CardStyled = styled.div`
   box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
   border-radius: ${theme.borderRadius.extraRound};
 
-  .product__img {
+  .product-img {
     width: 100%;
     height: auto;
     margin-top: 30px;
