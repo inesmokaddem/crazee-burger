@@ -2,21 +2,30 @@ import { ToastContainer, toast } from 'react-toastify';
 import styled from "styled-components";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import Profile from "./Profile";
+import { useState } from "react"
 
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function NavbarRigthSide({username}) {
-  const displayToastNotification = () => toast.info("Mode admin activé", {
-    // icon: <FaUserSecret size={30} />,
-    theme: "dark",
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  })
+
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+
+  const displayToastNotification = () => {
+    if (!isModeAdmin) {
+      toast.info("Mode admin activé", {
+        // icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    }
+    setIsModeAdmin(!isModeAdmin)
+  }
 
   return (
     <NavbarRightSideStyled className="right-side">
