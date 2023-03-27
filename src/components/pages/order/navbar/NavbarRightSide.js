@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import AdminButton from "./AdminButton";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 import Profile from "./Profile";
 
 export default function NavbarRigthSide({username}) {
   return (
     <NavbarRightSideStyled className="right-side">
-      <AdminButton/>
+      <ToggleButton/>
       <Profile username={username}/>
     </NavbarRightSideStyled>
   )
