@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import AdminButton from "./AdminButton";
 import Profile from "./Profile";
 
 export default function NavbarRigthSide({username}) {
   return (
     <NavbarRightSideStyled className="right-side">
-        {/* <div className="admin-button">Admin button</div> */}
+      <AdminButton/>
       <Profile username={username}/>
     </NavbarRightSideStyled>
   )
