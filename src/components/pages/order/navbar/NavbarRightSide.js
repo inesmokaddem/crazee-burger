@@ -1,10 +1,11 @@
-import { ToastContainer, toast } from 'react-toastify';
+
 import styled from "styled-components";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
 import Profile from "./Profile";
 import { useState } from "react"
+import ToastAdmin from "./ToastAdmin";
+import { toast } from "react-toastify";
 
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function NavbarRigthSide({username}) {
 
@@ -34,7 +35,7 @@ export default function NavbarRigthSide({username}) {
         labelIfUnchecked="Activer le mode admin"
         onToggle={displayToastNotification}
       />
-      <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <ToastAdmin/>
       <Profile username={username}/>
     </NavbarRightSideStyled>
   )
