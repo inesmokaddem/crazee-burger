@@ -6,7 +6,7 @@ import Profile from "./Profile";
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function NavbarRigthSide({username}) {
-  const notify = () => toast.info("Mode admin activé", {
+  const displayToastNotification = () => toast.info("Mode admin activé", {
     // icon: <FaUserSecret size={30} />,
     theme: "dark",
     position: "bottom-right",
@@ -23,9 +23,9 @@ export default function NavbarRigthSide({username}) {
       <ToggleButton 
         labelIfChecked="Désactiver le mode admin" 
         labelIfUnchecked="Activer le mode admin"
-        onToggle={notify}
+        onToggle={displayToastNotification}
       />
-      <ToastContainer/>
+      <ToastContainer className="toaster" bodyClassName="body-toast" />
       <Profile username={username}/>
     </NavbarRightSideStyled>
   )
