@@ -7,12 +7,12 @@ import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 
 
-export default function RigthSide({username}) {
+export default function RigthSide() {
 
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isModeAdmin, setisModeAdmin] = useState(false);
 
   const displayToastNotification = () => {
-    if (!isAdmin) {
+    if (!isModeAdmin) {
       toast.info("Mode admin activé", {
         // icon: <FaUserSecret size={30} />,
         theme: "dark",
@@ -25,22 +25,22 @@ export default function RigthSide({username}) {
         progress: undefined,
       })
     }
-    setIsAdmin(!isAdmin)
+    setisModeAdmin(!isModeAdmin)
   }
 
   return (
-    <RightSideStyled className="right-side">
+    <NavbarRightSideStyled className="right-side">
       <ToggleButton 
         labelIfChecked="Désactiver le mode admin" 
         labelIfUnchecked="Activer le mode admin"
         onToggle={displayToastNotification}
       />
       <ToastAdmin/>
-      <Profile username={username}/>
-    </RightSideStyled>
+      <Profile/>
+    </NavbarRightSideStyled>
   )
 }
-const RightSideStyled = styled.div`
+const NavbarRightSideStyled = styled.div`
   display: flex;
   align-items: center;
   padding-right: 50px;
