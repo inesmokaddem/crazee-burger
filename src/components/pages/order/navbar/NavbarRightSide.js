@@ -1,12 +1,42 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import Profile from "./Profile";
 
-export default function NavbarRigthSide({username}) {
+import styled from "styled-components";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
+import Profile from "./Profile";
+import { useState } from "react"
+import ToastAdmin from "./ToastAdmin";
+import { toast } from "react-toastify";
+
+
+export default function RigthSide() {
+
+  const [isModeAdmin, setisModeAdmin] = useState(false);
+
+  const displayToastNotification = () => {
+    if (!isModeAdmin) {
+      toast.info("Mode admin activé", {
+        // icon: <FaUserSecret size={30} />,
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    }
+    setisModeAdmin(!isModeAdmin)
+  }
+
   return (
     <NavbarRightSideStyled className="right-side">
-        {/* <div className="admin-button">Admin button</div> */}
-      <Profile username={username}/>
+      <ToggleButton 
+        labelIfChecked="Désactiver le mode admin" 
+        labelIfUnchecked="Activer le mode admin"
+        onToggle={displayToastNotification}
+      />
+      <ToastAdmin/>
+      <Profile/>
     </NavbarRightSideStyled>
   )
 }

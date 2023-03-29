@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import { theme } from '../../../theme';
 import Main from './main/Main';
@@ -6,14 +5,13 @@ import Navbar from './navbar/Navbar';
 
 export default function OrderPage(){
   // state 
-    const { username } = useParams() 
   // comportements
 
   // affichage
   return (
     <OrderPageStyled>
       <div className='container'>
-        <Navbar username={username}/>
+        <Navbar/>
         <Main/>
       </div>
     </OrderPageStyled>
