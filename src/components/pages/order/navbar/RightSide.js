@@ -7,7 +7,7 @@ import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 
 
-export default function NavbarRigthSide({username}) {
+export default function RigthSide({username}) {
 
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -29,7 +29,7 @@ export default function NavbarRigthSide({username}) {
   }
 
   return (
-    <NavbarRightSideStyled className="right-side">
+    <RightSideStyled className="right-side">
       <ToggleButton 
         labelIfChecked="Désactiver le mode admin" 
         labelIfUnchecked="Activer le mode admin"
@@ -37,10 +37,10 @@ export default function NavbarRigthSide({username}) {
       />
       <ToastAdmin/>
       <Profile username={username}/>
-    </NavbarRightSideStyled>
+    </RightSideStyled>
   )
 }
-const NavbarRightSideStyled = styled.div`
+const RightSideStyled = styled.div`
   display: flex;
   align-items: center;
   padding-right: 50px;

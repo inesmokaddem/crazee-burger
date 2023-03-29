@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavbarRightSide from "./NavbarRightSide";
+import RightSide from "./RightSide";
 import Logo from "../../../reusable-ui/Logo"
 import { theme } from "../../../../theme";
 import { refreshPage } from "../../../../utils/window";
@@ -9,7 +9,7 @@ export default function Navbar({username}) {
   return (
     <NavbarStyled>
         <Logo className="logo-order-page" onClick={refreshPage}/>
-        <NavbarRightSide username={username}/>
+        <RightSide username={username}/>
     </NavbarStyled>
   )
 }
