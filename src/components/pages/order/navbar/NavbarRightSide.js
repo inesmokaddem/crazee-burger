@@ -9,10 +9,10 @@ import { toast } from "react-toastify";
 
 export default function NavbarRigthSide({username}) {
 
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const displayToastNotification = () => {
-    if (!isModeAdmin) {
+    if (!isAdmin) {
       toast.info("Mode admin activé", {
         // icon: <FaUserSecret size={30} />,
         theme: "dark",
@@ -25,7 +25,7 @@ export default function NavbarRigthSide({username}) {
         progress: undefined,
       })
     }
-    setIsModeAdmin(!isModeAdmin)
+    setIsAdmin(!isAdmin)
   }
 
   return (
