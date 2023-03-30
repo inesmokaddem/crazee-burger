@@ -1,15 +1,19 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../context/OrderContext";
 import { theme } from "../../../../theme";
 import AdminBloc from "./Admin/AdminBloc";
 import Menu from "./Menu";
 
 export default function Main() {
+
+  const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext);
   return (
     <MainStyled>
       {/* <div className="basket">basket</div> */}
       <div className="menu-admin-bloc">
         <Menu/>
-        <AdminBloc/>
+        {isModeAdmin && <AdminBloc/>}
       </div>
 
     </MainStyled>
