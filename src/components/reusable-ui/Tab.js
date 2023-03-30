@@ -1,12 +1,13 @@
+import styled from "styled-components";
 import {AiOutlinePlus} from "react-icons/ai"
 import {MdModeEditOutline} from "react-icons/md"
 import {FiChevronDown} from "react-icons/fi"
-import styled from "styled-components";
-import {theme} from "../../../../../theme"
+import { theme } from "../../theme";
 
-export default function AdminTabs() {
+
+export default function Tab() {
   return (
-    <AdminTabsStyled>
+    <TabsStyled>
         <div className="tab">
             <button className="toggle-button"><FiChevronDown/></button>
         </div>
@@ -16,11 +17,12 @@ export default function AdminTabs() {
         <div className="tab">
             <MdModeEditOutline/> Modifier un produit
         </div>
-    </AdminTabsStyled>
+    </TabsStyled>
+
   )
 }
 
-const AdminTabsStyled = styled.div`
+const TabsStyled = styled.div`
     display: flex;
     color: ${theme.colors.greySemiDark};
     margin-left: 70px;

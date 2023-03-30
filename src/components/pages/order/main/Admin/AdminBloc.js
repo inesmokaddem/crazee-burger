@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
 import AdminPanel from "./AdminPanel";
-import AdminTabs from "./AdminTabs";
+import Tab from "../../../../reusable-ui/Tab" 
 
 export default function AdminBloc() {
   return (
     <AdminBlocStyled>
-      <AdminTabs/>
+      <Tab/>
       <AdminPanel/>
     </AdminBlocStyled>
   )
