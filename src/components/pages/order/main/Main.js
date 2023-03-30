@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
-import AdminBloc from "./AdminBloc/AdminBloc";
+import AdminBloc from "./Admin/AdminBloc";
 import Menu from "./Menu";
 
 export default function Main() {
