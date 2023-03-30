@@ -31,6 +31,7 @@ export default function RigthSide() {
   return (
     <NavbarRightSideStyled className="right-side">
       <ToggleButton 
+        isChecked={isModeAdmin}
         labelIfChecked="Désactiver le mode admin" 
         labelIfUnchecked="Activer le mode admin"
         onToggle={displayToastNotification}
