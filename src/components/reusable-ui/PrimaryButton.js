@@ -25,7 +25,7 @@ const PrimaryButtonStyled = styled.button`
 
     padding: 18px ${theme.fonts.size.P3};
     border-radius: ${theme.borderRadius.round};
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     font-weight: ${theme.fonts.weights.heavy};
     color: ${theme.colors.white};
     background-color: ${theme.colors.primary_burger};
