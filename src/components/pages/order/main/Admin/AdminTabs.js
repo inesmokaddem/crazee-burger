@@ -1,18 +1,42 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
 import Tab from "../../../../reusable-ui/Tab";
-
-import {AiOutlinePlus} from "react-icons/ai"
-import {MdModeEditOutline} from "react-icons/md"
 import {FiChevronDown, FiChevronUp} from "react-icons/fi"
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
+import { TabsLibrary } from "./TabsLibrary";
 
-export default function AdminTabs({isCollapsed, setIsCollapsed}) {
+export default function AdminTabs() {
+  // state
+  const {isCollapsed, setIsCollapsed, currentSelectedTab, setCurrentSelectedTab} = useContext(OrderContext)
+  // comportements 
+  const selectTab = (selectedTab) => {
+    setIsCollapsed(false)
+    setCurrentSelectedTab(selectedTab)
+  }
+
+  const tabs = TabsLibrary
 
   return (
     <AdminTabsStyled>
-        <Tab Icon={isCollapsed ? <FiChevronUp/> : <FiChevronDown/>} label="" onClick={() => setIsCollapsed(!isCollapsed)} className={isCollapsed ? "is-active" : ""} />
-        <Tab Icon={<AiOutlinePlus/>} label="Ajouter un produit" />
-        <Tab Icon={<MdModeEditOutline/>} label="Modifier un produit" />
+        <Tab 
+          index="chevron"
+          Icon={isCollapsed ? <FiChevronUp/> : <FiChevronDown/>} 
+          label=""
+          className={isCollapsed ? "is-active" : ""} 
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        />
+        {tabs.map((tab) => (
+          <Tab
+            key={tab.index}
+            index={tab.index}
+            label={tab.label}
+            Icon={tab.Icon}
+            onClick={() => selectTab(tab.index)}
+            className={currentSelectedTab === tab.index ? "is-active" : ""}
+          />
+        ))}
+
     </AdminTabsStyled>
   )
 }

@@ -1,10 +1,16 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
+import { getSelectedTab, TabsLibrary } from "./TabsLibrary";
 
 export default function AdminPanel() {
+  const { currentSelectedTab } = useContext(OrderContext) 
+  const tabs = TabsLibrary
+  const selectedTab = getSelectedTab(tabs, currentSelectedTab)
   return (
     <AdminPanelStyled>
-        Ajouter un produit
+        <h3>{selectedTab && selectedTab.label}</h3>
     </AdminPanelStyled>
   )
 }

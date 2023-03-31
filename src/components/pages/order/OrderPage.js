@@ -8,12 +8,16 @@ import Navbar from './navbar/Navbar';
 export default function OrderPage(){
   // state 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [currentSelectedTab, setCurrentSelectedTab] = useState("add")
   // comportements
-
-
   const orderContextValue = {
     isModeAdmin,
-    setIsModeAdmin
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentSelectedTab,
+    setCurrentSelectedTab,
   }
 
   // affichage
