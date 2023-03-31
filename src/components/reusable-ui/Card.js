@@ -92,6 +92,7 @@ const CardStyled = styled.div`
           font-size: ${theme.fonts.size.XS};
           cursor: pointer;
           padding: 12px;
+          background-color: ${theme.colors.primary};
         }
       }
     }
