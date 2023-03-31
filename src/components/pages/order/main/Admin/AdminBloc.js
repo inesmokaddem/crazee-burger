@@ -1,12 +1,14 @@
+import { useState } from "react";
 import styled from "styled-components";
 import AdminPanel from "./AdminPanel";
 import AdminTabs from "./AdminTabs";
 
 export default function AdminBloc() {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   return (
     <AdminBlocStyled>
-      <AdminTabs/>
-      <AdminPanel/>
+      <AdminTabs isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+      {!isCollapsed && <AdminPanel/>}
     </AdminBlocStyled>
   )
 }
