@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
 import { theme } from "../../../../theme";
-import AdminBloc from "./Admin/AdminBloc";
+import Admin from "./Admin/Admin";
 import Menu from "./Menu";
 
 export default function Main() {
@@ -13,7 +13,7 @@ export default function Main() {
       {/* <div className="basket">basket</div> */}
       <div className="menu-admin-bloc">
         <Menu/>
-        {isModeAdmin && <AdminBloc/>}
+        {isModeAdmin && <Admin/>}
       </div>
 
     </MainStyled>

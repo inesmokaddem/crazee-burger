@@ -4,17 +4,17 @@ import OrderContext from "../../../../../context/OrderContext";
 import AdminPanel from "./AdminPanel";
 import AdminTabs from "./AdminTabs";
 
-export default function AdminBloc() {
+export default function Admin() {
   const {isCollapsed} = useContext(OrderContext);
   return (
-    <AdminBlocStyled>
+    <AdminStyled>
       <AdminTabs />
       {!isCollapsed && <AdminPanel/>}
-    </AdminBlocStyled>
+    </AdminStyled>
   )
 }
 
-const AdminBlocStyled = styled.div`
+const AdminStyled = styled.div`
     position: absolute;
     bottom: 0;
     right: 0;
