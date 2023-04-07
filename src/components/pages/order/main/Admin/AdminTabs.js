@@ -8,11 +8,11 @@ import { TabsLibrary } from "./TabsLibrary";
 
 export default function AdminTabs() {
   // state
-  const {isCollapsed, setIsCollapsed, currentSelectedTab, setCurrentSelectedTab} = useContext(OrderContext)
+  const {isCollapsed, setIsCollapsed, currentTabSelected, setcurrentTabSelected} = useContext(OrderContext)
   // comportements 
-  const selectTab = (selectedTab) => {
+  const selectTab = (TabSelected) => {
     setIsCollapsed(false)
-    setCurrentSelectedTab(selectedTab)
+    setcurrentTabSelected(TabSelected)
   }
 
   const tabs = TabsLibrary
@@ -33,7 +33,7 @@ export default function AdminTabs() {
             label={tab.label}
             Icon={tab.Icon}
             onClick={() => selectTab(tab.index)}
-            className={currentSelectedTab === tab.index ? "is-active" : ""}
+            className={currentTabSelected === tab.index ? "is-active" : ""}
           />
         ))}
 

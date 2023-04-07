@@ -14,6 +14,6 @@ export const TabsLibrary = [
     }
 ]
 
-export const getSelectedTab = (tabs, currentSelectedTab) => {
-    return tabs.find((tab) => tab.index === currentSelectedTab)
+export const getTabSelected = (tabs, currentTabSelected) => {
+    return tabs.find((tab) => tab.index === currentTabSelected)
 }

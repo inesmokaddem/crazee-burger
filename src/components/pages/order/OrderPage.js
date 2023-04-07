@@ -9,15 +9,15 @@ export default function OrderPage(){
   // state 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentSelectedTab, setCurrentSelectedTab] = useState("add")
+  const [currentTabSelected, setcurrentTabSelected] = useState("add")
   // comportements
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,
     setIsCollapsed,
-    currentSelectedTab,
-    setCurrentSelectedTab,
+    currentTabSelected,
+    setcurrentTabSelected,
   }
 
   // affichage

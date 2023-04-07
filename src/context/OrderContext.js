@@ -9,6 +9,6 @@ export default createContext({
     setIsCollapsed: () => {},
 
     // Selected tab context 
-    currentSelectedTab: false,
-    setCurrentSelectedTab: () => {},
+    currentTabSelected: false,
+    setcurrentTabSelected: () => {},
 })
