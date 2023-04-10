@@ -4,18 +4,18 @@ import Tab from "../../../../reusable-ui/Tab";
 import {FiChevronDown, FiChevronUp} from "react-icons/fi"
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { TabsConfig } from "./TabsConfig";
+import { tabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
   // state
   const {isCollapsed, setIsCollapsed, currentTabSelected, setcurrentTabSelected} = useContext(OrderContext)
   // comportements 
-  const selectTab = (TabSelected) => {
+  const selectTab = (tabSelected) => {
     setIsCollapsed(false)
-    setcurrentTabSelected(TabSelected)
+    setcurrentTabSelected(tabSelected)
   }
 
-  const tabs = TabsConfig
+  const tabs = tabsConfig
 
   return (
     <AdminTabsStyled>
