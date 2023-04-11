@@ -32,7 +32,7 @@ export default function LoginForm() {
                 <h2>Connectez-vous</h2>
                 <div>
                     <TextInput 
-                        value={inputValue} 
+                        value={inputValue}
                         onChange={handleChange} 
                         placeholder={"Entrez votre prénom"}
                         required
