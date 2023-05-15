@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../context/OrderContext";
 import { theme } from "../../../../../theme";
-import { getTabSelected, tabsConfig } from "./TabsConfig";
+import { getTabSelected, tabsConfig } from "./tabsConfig";
 
 export default function AdminPanel() {
   const { currentTabSelected } = useContext(OrderContext) 
