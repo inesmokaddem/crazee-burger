@@ -49,10 +49,19 @@ const AdminTabsStyled = styled.div`
 
     button {
         margin-left: 1px;
+      &:hover {
+        border-bottom: 2px solid ${theme.colors.white};
+        text-decoration: underline;
+      }
     }
     .is-active {
         background: ${theme.colors.dark};
         color: ${theme.colors.white};
         border-color: ${theme.colors.dark};
+      &:hover {
+        border-bottom: 2px solid ${theme.colors.dark};;
+        text-decoration: underline;
+      }
     }
+
 `;
