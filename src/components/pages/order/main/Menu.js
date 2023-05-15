@@ -6,7 +6,7 @@ import { formatPrice } from "../../../../utils/maths"
 import Card from "../../../reusable-ui/Card"
 
 export default function Menu() {
-  const [menu, setMenu] = useState(fakeMenu2)
+  const [menu] = useState(fakeMenu2)
 
   return (
     <MenuStyled>
