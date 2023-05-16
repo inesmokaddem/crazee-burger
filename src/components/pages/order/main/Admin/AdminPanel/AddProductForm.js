@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import OrderContext from "../../../../../../context/OrderContext";
+
 
 export default function AddProductForm() {
+  const { handleAddProduct } = useContext(OrderContext)
+
   return (
-    <AddProductFormStyled>
+    <AddProductFormStyled onSubmit={handleAddProduct}>
         <div className="product-image">Coming Soon</div>
         <div className="product-form">
             <input type="text" placeholder="nom du produit (ex: Super Burger)" />

@@ -4,13 +4,33 @@ import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
 import Main from './main/Main';
 import Navbar from './navbar/Navbar';
+import { fakeMenu } from "../../../data/fakeMenu";
+
 
 export default function OrderPage(){
   // state 
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setcurrentTabSelected] = useState("add")
+  const [menu, setMenu] = useState(fakeMenu.SMALL)
+
+  const newProduct = {
+    id: new Date().getTime(),
+    imageSource: "/images/burger-vegan.png",
+    title: "Vegan Burger",
+    price: 7.99,
+  }
+
   // comportements
+  const handleAddProduct = () => {
+    // 1. copie du tableau
+    const menuCopy = [...menu]
+    // 2. manip de la copie du tableau
+    const menuUpdated = [newProduct, ...menuCopy]
+    // 3. update du tableau via le setter dédié
+    setMenu(menuUpdated)
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -18,6 +38,9 @@ export default function OrderPage(){
     setIsCollapsed,
     currentTabSelected,
     setcurrentTabSelected,
+    menu,
+    setMenu,
+    handleAddProduct,
   }
 
   // affichage
