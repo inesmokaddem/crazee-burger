@@ -9,7 +9,7 @@ import PrimaryButton from '../../reusable-ui/PrimaryButton'
 
 export default function LoginForm() {
     // state
-    const [inputValue, setInputValue] = useState("")
+    const [inputValue, setInputValue] = useState("Inès")
     const navigate = useNavigate()
 
     // comportements
@@ -75,7 +75,7 @@ const LoginFormStyled = styled.form`
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: ${theme.fonts.size.P0};
+        font-size: ${theme.fonts.size.SM};
         margin-left: ${theme.gridUnit + 2}px;
     }
 `;
