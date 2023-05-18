@@ -32,7 +32,6 @@ export default function OrderPage(){
     currentTabSelected,
     setcurrentTabSelected,
     menu,
-    setMenu,
     handleAddProduct,
   }
 
