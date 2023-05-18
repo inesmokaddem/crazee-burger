@@ -8,11 +8,11 @@ import OrderContext from "../../../../context/OrderContext"
 export default function Menu() {
 
   // state
-  const { menu } = useContext(OrderContext)
+  const { menu, isCollapsed } = useContext(OrderContext)
   // comportements
   // affichage 
   return (
-    <MenuStyled>
+    <MenuStyled className={isCollapsed ? "" : "admin-open"}>
       {menu.map(({ id, title, imageSource, price }) => {
         return (
           <Card
@@ -39,4 +39,8 @@ const MenuStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
   overflow-y: scroll;
+
+  &.admin-open {
+    padding: 50px 50px 250px;
+  }
 `
