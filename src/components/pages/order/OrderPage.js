@@ -14,15 +14,8 @@ export default function OrderPage(){
   const [currentTabSelected, setcurrentTabSelected] = useState("add")
   const [menu, setMenu] = useState(fakeMenu.SMALL)
 
-  const newProduct = {
-    id: new Date().getTime(),
-    imageSource: "/images/burger-vegan.png",
-    title: "Vegan Burger",
-    price: 7.99,
-  }
-
   // comportements
-  const handleAddProduct = () => {
+  const handleAddProduct = (newProduct) => {
     // 1. copie du tableau
     const menuCopy = [...menu]
     // 2. manip de la copie du tableau

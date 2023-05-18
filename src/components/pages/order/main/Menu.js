@@ -41,6 +41,6 @@ const MenuStyled = styled.div`
   overflow-y: scroll;
 
   &.admin-open {
-    padding: 50px 50px 250px;
+    padding: 50px 50px 300px;
   }
 `

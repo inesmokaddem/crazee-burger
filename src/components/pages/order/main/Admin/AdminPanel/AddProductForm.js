@@ -6,9 +6,16 @@ import OrderContext from "../../../../../../context/OrderContext";
 export default function AddProductForm() {
   const { handleAddProduct } = useContext(OrderContext)
 
+  const newProduct = {
+    id: new Date().getTime(),
+    imageSource: "/images/burger-vegan.png",
+    title: "Vegan Burger",
+    price: 7.99,
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAddProduct();
+    handleAddProduct(newProduct);
   }
 
   return (
