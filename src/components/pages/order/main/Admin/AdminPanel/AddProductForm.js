@@ -6,8 +6,13 @@ import OrderContext from "../../../../../../context/OrderContext";
 export default function AddProductForm() {
   const { handleAddProduct } = useContext(OrderContext)
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAddProduct();
+  }
+
   return (
-    <AddProductFormStyled onSubmit={handleAddProduct}>
+    <AddProductFormStyled onSubmit={handleSubmit}>
         <div className="product-image">Coming Soon</div>
         <div className="product-form">
             <input type="text" placeholder="nom du produit (ex: Super Burger)" />
