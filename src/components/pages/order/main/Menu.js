@@ -5,6 +5,8 @@ import { formatPrice } from "../../../../utils/maths"
 import Card from "../../../reusable-ui/Card"
 import OrderContext from "../../../../context/OrderContext"
 
+const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
+
 export default function Menu() {
 
   // state
@@ -18,7 +20,7 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource}
+            imageSource={imageSource ? imageSource : DEFAULT_PRODUCT_IMAGE}
             leftDescription={formatPrice(price)}
           />
         )
