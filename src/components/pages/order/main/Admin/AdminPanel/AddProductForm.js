@@ -32,13 +32,15 @@ export default function AddProductForm() {
 
   return (
     <AddProductFormStyled onSubmit={handleSubmit}>
-        <div className="product-image">Coming Soon</div>
+        <div className="product-image">
+          {newProduct.imageSource ? (<img src={newProduct.imageSource} alt={newProduct.title}></img>) : (<div>Aucune image</div>)}
+        </div>
         <div className="product-form">
             <input
             name="title"
             value={newProduct.title} 
             type="text" 
-            placeholder="nom du produit (ex: Super Burger)" 
+            placeholder="Nom du produit (ex: Super Burger)" 
             onChange={handleChange}
             />
             <input
@@ -75,6 +77,13 @@ const AddProductFormStyled = styled.form`
       display: flex;
       justify-content: center;
       align-items: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
     }
     .product-form {
       grid-area: 1 / 2 / 4 / -1;
