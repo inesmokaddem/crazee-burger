@@ -1,20 +1,23 @@
 import { useContext, useState } from "react"
 import styled from "styled-components"
-import { theme } from "../../../../theme"
-import { formatPrice } from "../../../../utils/maths"
-import Card from "../../../reusable-ui/Card"
-import OrderContext from "../../../../context/OrderContext"
+import { formatPrice } from "../../../../../utils/maths"
+import Card from "../../../../reusable-ui/Card"
+import OrderContext from "../../../../../context/OrderContext"
+import { theme } from "../../../../../theme"
+import EmptyMenu from "./EmptyMenu"
 
 const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
 
-  // state
-  const { menu, isCollapsed, isModeAdmin, handleDelete } = useContext(OrderContext)
+  // states parents (il ne s'agit pas de son state)
+  const { menu, isCollapsed, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
 
   // comportements
 
   // affichage 
+  if (menu.length === 0) return <EmptyMenu resetMenu={resetMenu} />
+  
   return (
     <MenuStyled className={isCollapsed ? "" : "admin-open"}>
       {menu.map(({ id, title, imageSource, price }) => {
