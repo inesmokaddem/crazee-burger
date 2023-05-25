@@ -1,41 +1,84 @@
-import styled from "styled-components";
-import { theme } from "../../theme";
+import styled, { css } from "styled-components"
+import { theme } from "../../theme"
 
-export default function TextInput({ value, onChange, Icon, className, ...extraProps }) { // props // destructuring de props, ...restProps est un objet qui contient en propriétés placeholder de valeur "entrez votre prénom", required de valeur true ou false. 
+export default function TextInput({
+  onChange,
+  Icon,
+  className,
+  variant = "normal",
+  ...extraProps
+}) {
   return (
-    <InputStyled className={className}>
-        <div className="icon">{Icon && Icon}</div>
-        <input value={value} onChange={onChange} type="text" {...extraProps} />
-    </InputStyled>
+    <TextInputStyled className={className} variant={variant}>
+      {Icon && <div className="icon">{Icon}</div>}
+      <input onChange={onChange} type="text" {...extraProps} />
+    </TextInputStyled>
   )
 }
 
-const InputStyled = styled.div`
+const TextInputStyled = styled.div`
+  ${(props) => {
+    if (props.variant === "normal") return getNormalStyle()
+    if (props.variant === "minimalist") return getMinimalistStyle()
+  }}
+`
+
+const getNormalStyle = () => {
+  return css`
     background-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;
-    padding: 18px 24px;
+    padding: 18px 28px;
+    color: ${theme.colors.greySemiDark};
 
     .icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: ${theme.fonts.size.SM};
-        margin: 0 8px 0 10px;
-        color: ${theme.colors.greySemiDark};
-        min-width: 1em; // that way, the icon size is NOT affected
+      font-size: ${theme.fonts.size.SM};
+      margin: 0 13px 0 8px;
     }
-    input {
-        border: none;
-        font-size: ${theme.fonts.size.SM};
-        color: ${theme.colors.dark};
-        width: 100%;
-        /* display: flex; */
 
-        &::placeholder {
-            background: ${theme.colors.white};
-            color: ${theme.colors.greyMedium};
-        }
+    input {
+      border: none;
+      font-size: ${theme.fonts.size.SM};
+      color: ${theme.colors.dark};
+      width: 100%;
+
+      &::placeholder {
+        background: ${theme.colors.white};
+        color: ${theme.colors.greyMedium};
+      }
     }
-`;
+  `
+}
+
+const getMinimalistStyle = () => {
+  return css`
+    background-color: ${theme.colors.background_white};
+    border-radius: ${theme.borderRadius.round};
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    color: ${theme.colors.greyBlue};
+
+    .icon {
+      font-size: ${theme.fonts.size.SM};
+      margin: 0 13px 0 8px;
+    }
+
+    input {
+      border: none;
+      background: ${theme.colors.background_white}; ////+
+      font-size: ${theme.fonts.size.SM};
+      color: ${theme.colors.dark};
+      width: 100%;
+
+      &::placeholder {
+        color: ${theme.colors.greyMedium};
+      }
+
+      &:focus {
+        outline: 0; //// add outline
+      }
+    }
+  `
+}

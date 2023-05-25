@@ -38,6 +38,7 @@ export default function LoginForm() {
                         required
                         Icon={<BsPersonCircle />}
                         className="input-login"
+                        version="normal"
                     />
                     <PrimaryButton 
                         label={"Accéder à mon espace"} 
@@ -50,29 +51,31 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.form`
-    text-align: center;
-    max-width: 500px;
-    min-width: 400px;
-    margin: 0 auto;
-    padding: 2.5rem ${theme.spacing.lg};
-    border-radius: ${theme.borderRadius.round};
-    font-family: "Amatic SC", cursive;
+  text-align: center;
+  max-width: 500px;
+  min-width: 400px;
+  margin: 0px auto;
+  padding: 40px ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
+  font-family: "Amatic SC", cursive;
 
-    hr {
-        border: 1.5px solid ${theme.colors.loginLine};
-        margin-bottom: ${theme.gridUnit * 5}px;
-    }
+  hr {
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: ${theme.gridUnit * 5}px;
+  }
 
-    h1 {
-        color: ${theme.colors.white};
-        font-size: ${theme.fonts.size.P5};
-    }
-    h2 {
-        margin: ${theme.spacing.md} 10px 10px;
-        color: ${theme.colors.white};
-        font-size: ${theme.fonts.size.P4};
-    }
-    .input-login {
+  h1 {
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P5};
+  }
+
+  h2 {
+    margin: 20px 10px 10px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P4};
+  }
+
+  .input-login {
     margin: 18px 0;
-    }
+  }
 `;
