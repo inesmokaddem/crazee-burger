@@ -145,7 +145,7 @@ const AddProductFormStyled = styled.form`
     display: flex;
     align-items: center;
     position: relative;
-    top: 3px;
+    /* top: 3px; */
 
     .submit-button {
       /* height: 100%; */
