@@ -17,68 +17,62 @@ export default function TextInput({
 }
 
 const TextInputStyled = styled.div`
-  ${(props) => {
-    if (props.variant === "normal") return getNormalStyle()
-    if (props.variant === "minimalist") return getMinimalistStyle()
-  }}
+  border-radius: ${theme.borderRadius.round};
+  display: flex;
+  align-items: center;
+
+  .icon {
+    font-size: ${theme.fonts.size.SM};
+    margin: 0 13px 0 8px;
+    display: flex; // to center icon vertically
+  }
+
+  input {
+    border: none;
+    font-size: ${theme.fonts.size.SM};
+    width: 100%;
+
+    &::placeholder {
+      color: ${theme.colors.greyMedium};
+    }
+  }
+  /* ${(props) => {
+    if (props.variant === "normal") return normalStyle
+    if (props.variant === "minimalist") return minimalistStyle
+  }} */
+  ${({ variant }) => extraStyle[variant]}
 `
 
-const getNormalStyle = () => {
-  return css`
-    background-color: ${theme.colors.white};
-    border-radius: ${theme.borderRadius.round};
-    display: flex;
-    align-items: center;
-    padding: 18px 28px;
-    color: ${theme.colors.greySemiDark};
+const normalStyle = css`
+  background-color: ${theme.colors.white};
+  padding: 18px 28px;
+  color: ${theme.colors.greySemiDark};
 
-    .icon {
-      font-size: ${theme.fonts.size.SM};
-      margin: 0 13px 0 8px;
+  input {
+    color: ${theme.colors.dark};
+
+    &::placeholder {
+      background: ${theme.colors.white};
     }
+  }
+`
 
-    input {
-      border: none;
-      font-size: ${theme.fonts.size.SM};
-      color: ${theme.colors.dark};
-      width: 100%;
+const minimalistStyle = css`
+  background-color: ${theme.colors.background_white};
+  padding: 8px 16px;
+  color: ${theme.colors.greyBlue};
 
-      &::placeholder {
-        background: ${theme.colors.white};
-        color: ${theme.colors.greyMedium};
-      }
+  input {
+    background: ${theme.colors.background_white}; ////+
+    color: ${theme.colors.dark};
+
+    &:focus {
+      outline: 0; //// add outline
     }
-  `
-}
+  }
+`
 
-const getMinimalistStyle = () => {
-  return css`
-    background-color: ${theme.colors.background_white};
-    border-radius: ${theme.borderRadius.round};
-    display: flex;
-    align-items: center;
-    padding: 8px 16px;
-    color: ${theme.colors.greyBlue};
-
-    .icon {
-      font-size: ${theme.fonts.size.SM};
-      margin: 0 13px 0 8px;
-    }
-
-    input {
-      border: none;
-      background: ${theme.colors.background_white}; ////+
-      font-size: ${theme.fonts.size.SM};
-      color: ${theme.colors.dark};
-      width: 100%;
-
-      &::placeholder {
-        color: ${theme.colors.greyMedium};
-      }
-
-      &:focus {
-        outline: 0; //// add outline
-      }
-    }
-  `
+const extraStyle = {
+  normal: normalStyle,
+  minimalist: minimalistStyle,
 }
