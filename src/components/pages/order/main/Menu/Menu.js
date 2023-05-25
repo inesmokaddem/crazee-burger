@@ -4,7 +4,8 @@ import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable-ui/Card"
 import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
-import EmptyMenu from "./EmptyMenu"
+import EmptyMenuAdmin from "./EmptyMenuAdmin"
+import EmptyMenuClient from "./EmptyMenuClient"
 
 const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
@@ -16,8 +17,12 @@ export default function Menu() {
   // comportements
 
   // affichage 
-  if (menu.length === 0) return <EmptyMenu resetMenu={resetMenu} />
-  
+  if (menu.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient />
+    return <EmptyMenuAdmin onReset={resetMenu} />
+  }
+
+
   return (
     <MenuStyled className={isCollapsed ? "" : "admin-open"}>
       {menu.map(({ id, title, imageSource, price }) => {
