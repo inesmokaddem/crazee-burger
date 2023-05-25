@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function TextInput({ value, onChange, Icon, ...extraProps }) { // props // destructuring de props, ...restProps est un objet qui contient en propriétés placeholder de valeur "entrez votre prénom", required de valeur true ou false. 
+export default function TextInput({ value, onChange, Icon, className, ...extraProps }) { // props // destructuring de props, ...restProps est un objet qui contient en propriétés placeholder de valeur "entrez votre prénom", required de valeur true ou false. 
   return (
-    <InputStyled>
-        {Icon && Icon}
+    <InputStyled className={className}>
+        <div className="icon">{Icon && Icon}</div>
         <input value={value} onChange={onChange} type="text" {...extraProps} />
     </InputStyled>
   )
@@ -16,11 +16,13 @@ const InputStyled = styled.div`
     display: flex;
     align-items: center;
     padding: 18px 24px;
-    margin: 18px 0;
 
     .icon {
-        font-size: 15px;
-        margin-right: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: ${theme.fonts.size.SM};
+        margin: 0 8px 0 10px;
         color: ${theme.colors.greySemiDark};
         min-width: 1em; // that way, the icon size is NOT affected
     }
