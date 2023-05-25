@@ -7,7 +7,7 @@ import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import { theme } from "../../../../../../theme"
-import PrimaryButton from "../../../../../reusable-ui/PrimaryButton"
+import Button from "../../../../../reusable-ui/Button"
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -81,7 +81,7 @@ export default function AddForm() {
       </div>
 
       <div className="submit">
-        <PrimaryButton
+        <Button
           variant="success"
           label="Ajouter un nouveau produit au menu"
           className="submit-button"

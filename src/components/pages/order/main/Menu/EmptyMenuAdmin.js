@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
-import Button from "../../../../reusable-ui/PrimaryButton"
+import Button from "../../../../reusable-ui/Button"
 
 export default function EmptyMenuAdmin({ resetMenu }) {
   return (
