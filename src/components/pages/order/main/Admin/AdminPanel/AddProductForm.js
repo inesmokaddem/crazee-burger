@@ -7,6 +7,7 @@ import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
 import { theme } from "../../../../../../theme"
+import PrimaryButton from "../../../../../reusable-ui/PrimaryButton"
 
 const EMPTY_PRODUCT = {
   id: "",
@@ -44,7 +45,7 @@ export default function AddForm() {
     <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">
         {newProduct.imageSource ? (
-          <img src={newProduct.imageSource} />
+          <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
           <div className="empty-image">Aucune image</div>
         )}
@@ -80,7 +81,11 @@ export default function AddForm() {
       </div>
 
       <div className="submit">
-        <button className="submit-button">Ajouter un nouveau produit au menu</button>
+        <PrimaryButton
+          variant="success"
+          label="Ajouter un nouveau produit au menu"
+          className="submit-button"
+        />
         {isSubmitted && (
           <div className="submit-message">
             <span>Ajouté avec succès</span>
@@ -137,15 +142,10 @@ const AddFormStyled = styled.form`
 
   .submit {
     grid-area: 4 / 2 / -1 / -1;
-    background: green;
     display: flex;
 
-    .submit-button {
-      /* width: 50%; */
-    }
 
     .submit-message {
-      border: 1px solid blue;
       display: flex;
       align-items: center;
     }
