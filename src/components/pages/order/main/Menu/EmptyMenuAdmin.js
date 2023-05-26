@@ -2,12 +2,12 @@ import styled from "styled-components"
 import { theme } from "../../../../../theme"
 import Button from "../../../../reusable-ui/Button"
 
-export default function EmptyMenuAdmin({ resetMenu }) {
+export default function EmptyMenuAdmin({ onReset }) {
   return (
     <EmptyMenuAdminStyled>
       <span className="title">Le menu est vide ?</span>
       <span className="description">Cliquez ci-dessous pour le réinitialiser</span>
-      <Button label={"Générer de nouveaux produits"} onClick={resetMenu} />
+      <Button label={"Générer de nouveaux produits"} onClick={onReset} />
     </EmptyMenuAdminStyled>
   )
 }
