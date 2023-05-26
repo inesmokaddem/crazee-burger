@@ -5,6 +5,8 @@ import { theme } from '../../../theme';
 import Main from './main/Main';
 import Navbar from './navbar/Navbar';
 import { fakeMenu } from "../../../data/fakeMenu";
+import { EMPTY_PRODUCT } from './main/Admin/AdminPanel/AddProductForm';
+
 
 
 export default function OrderPage(){
@@ -12,7 +14,9 @@ export default function OrderPage(){
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setcurrentTabSelected] = useState("add")
-  const [menu, setMenu] = useState(fakeMenu.SMALL)
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
 
   // comportements
   const handleAddProduct = (newProduct) => {
@@ -48,6 +52,8 @@ export default function OrderPage(){
     handleAddProduct,
     handleDelete,
     resetMenu,
+    newProduct,
+    setNewProduct,
   }
 
   // affichage

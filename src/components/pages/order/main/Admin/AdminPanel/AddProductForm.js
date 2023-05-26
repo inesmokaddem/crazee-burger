@@ -9,7 +9,7 @@ import { MdOutlineEuro } from "react-icons/md"
 import { theme } from "../../../../../../theme"
 import Button from "../../../../../reusable-ui/Button"
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
@@ -17,8 +17,7 @@ const EMPTY_PRODUCT = {
 }
 
 export default function AddProductForm() {
-  const { handleAddProduct } = useContext(OrderContext)
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const { handleAddProduct, newProduct, setNewProduct } = useContext(OrderContext)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (event) => {
