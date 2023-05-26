@@ -44,17 +44,9 @@ const inputTexts = getInputTextsConfig(newProduct);
     <AddProductFormStyled onSubmit={handleSubmit}>
       <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}/>
       <div className="input-fields">
-        {inputTexts.map(({ id, name, placeholder, Icon, value }) => (
-          <TextInput
-            key={id}
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={handleChange}
-            Icon={Icon}
-            variant="minimalist"
-          />
-        ))}
+        {inputTexts.map((input) => 
+          <TextInput key={input.id} {...input} onChange={handleChange} variant="minimalist" />    
+        )}
       </div>
 
       <div className="submit">
