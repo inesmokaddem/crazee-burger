@@ -2,12 +2,10 @@ import { useContext, useState } from "react"
 import styled from "styled-components"
 import OrderContext from "../../../../../../context/OrderContext"
 import TextInput from "../../../../../reusable-ui/TextInput"
-import { FaHamburger } from "react-icons/fa"
-import { BsFillCameraFill } from "react-icons/bs"
-import { MdOutlineEuro } from "react-icons/md"
 import Button from "../../../../../reusable-ui/Button"
 import ImagePreview from "./ImagePreview"
 import SubmitMessage from "./SubmitMessage"
+import { getInputTextsConfig } from "./inputTextConfig"
 
 export const EMPTY_PRODUCT = {
   id: "",
@@ -40,37 +38,23 @@ export default function AddProductForm() {
     setNewProduct(EMPTY_PRODUCT)
   }
 
+const inputTexts = getInputTextsConfig(newProduct);
+
   return (
     <AddProductFormStyled onSubmit={handleSubmit}>
       <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title}/>
       <div className="input-fields">
-        <TextInput
-          name="title"
-          value={newProduct.title}
-          type="text"
-          placeholder="Nom du produit (ex: Super Burger)"
-          onChange={handleChange}
-          Icon={<FaHamburger />}
-          variant="minimalist"
-        />
-        <TextInput
-          name="imageSource"
-          value={newProduct.imageSource}
-          type="text"
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          onChange={handleChange}
-          Icon={<BsFillCameraFill />}
-          variant="minimalist"
-        />
-        <TextInput
-          name="price"
-          value={newProduct.price ? newProduct.price : ""}
-          type="text"
-          placeholder="Prix"
-          onChange={handleChange}
-          Icon={<MdOutlineEuro />}
-          variant="minimalist"
-        />
+        {inputTexts.map(({ id, name, placeholder, Icon, value }) => (
+          <TextInput
+            key={id}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={handleChange}
+            Icon={Icon}
+            variant="minimalist"
+          />
+        ))}
       </div>
 
       <div className="submit">
