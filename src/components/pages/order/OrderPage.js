@@ -4,13 +4,43 @@ import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
 import Main from './main/Main';
 import Navbar from './navbar/Navbar';
+import { fakeMenu } from "../../../data/fakeMenu";
+import { EMPTY_PRODUCT } from './main/Admin/AdminPanel/AddProductForm';
+
+
 
 export default function OrderPage(){
   // state 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setcurrentTabSelected] = useState("add")
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
+
   // comportements
+  const handleAddProduct = (newProduct) => {
+    // 1. copie du tableau
+    const menuCopy = [...menu]
+    // 2. manip de la copie du tableau
+    const menuUpdated = [newProduct, ...menuCopy]
+    // 3. update du tableau via le setter dédié
+    setMenu(menuUpdated)
+  }
+
+  const handleDelete = (idProductToDelete) => { 
+    // 1. copie du state
+    const menuCopy = [...menu]
+    // 2. manip de la copie du state
+    const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
+    // 3. update du state
+    setMenu(menuUpdated)
+   } 
+
+  const resetMenu = () => { 
+    setMenu(fakeMenu.MEDIUM)
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -18,6 +48,12 @@ export default function OrderPage(){
     setIsCollapsed,
     currentTabSelected,
     setcurrentTabSelected,
+    menu,
+    handleAddProduct,
+    handleDelete,
+    resetMenu,
+    newProduct,
+    setNewProduct,
   }
 
   // affichage
