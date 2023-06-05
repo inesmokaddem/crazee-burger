@@ -25,17 +25,21 @@ export default function AddProductForm() {
     })
   }
 
+  const displaySuccess = () => {
+    setTimeout(() => {
+      setIsSubmitted(false)
+    }, 2000)
+    setNewProduct(EMPTY_PRODUCT)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     handleAddProduct({
       ...newProduct,
       id: crypto.randomUUID(),
     })
-    setIsSubmitted(true)
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 2000)
-    setNewProduct(EMPTY_PRODUCT)
+    setIsSubmitted(true);
+    displaySuccess();
   }
 
 const inputTexts = getInputTextsConfig(newProduct);
