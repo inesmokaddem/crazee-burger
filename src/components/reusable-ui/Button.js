@@ -3,15 +3,15 @@ import { theme } from "../../theme"
 
 export default function Button({ label, Icon, className, variant = "normal", onClick }) {
   return (
-    <PrimaryButtonStyled className={className} variant={variant} onClick={onClick}>
+    <ButtonStyled className={className} variant={variant} onClick={onClick}>
       <span>{label}</span>
       {Icon && <div className="icon">{Icon}</div>}
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   )
 }
 
-const PrimaryButtonStyled = styled.button`
-  ${({ variant }) => PrimaryButtonStyle[variant]}
+const ButtonStyled = styled.button`
+  ${({ variant }) => primaryButtonStyle[variant]}
 `
 
 const normalStyle = css`
@@ -95,7 +95,7 @@ const successStyle = css`
   }
 `
 
-const PrimaryButtonStyle = {
+const primaryButtonStyle = {
   normal: normalStyle,
   success: successStyle,
 }
