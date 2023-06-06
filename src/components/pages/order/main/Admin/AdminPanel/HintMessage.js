@@ -6,7 +6,7 @@ import { HiCursorClick } from "react-icons/hi"
 export default function HintMessage() {
   return (
     <HintMessageStyled>
-        <span>Cliquer sur un produit du menu pour le modifier en temps réel</span>
+        <span>Cliquer sur un produit du menu pour le modifier</span>
         <HiCursorClick/>
     </HintMessageStyled>
   )
@@ -15,7 +15,7 @@ export default function HintMessage() {
 const HintMessageStyled = styled.div`
     display: flex;
     align-items: center;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.families.stylish};
     font-size: ${theme.fonts.size.P3};
     color: ${theme.colors.greyBlue};
     position: relative;
