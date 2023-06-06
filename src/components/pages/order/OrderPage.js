@@ -11,9 +11,9 @@ import { EMPTY_PRODUCT } from './main/Admin/AdminPanel/AddProductForm';
 
 export default function OrderPage(){
   // state 
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setcurrentTabSelected] = useState("add")
+  const [currentTabSelected, setcurrentTabSelected] = useState("edit")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
