@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import styled from "styled-components"
 import { formatPrice } from "../../../../../utils/maths"
 import Card from "../../../../reusable-ui/Card"

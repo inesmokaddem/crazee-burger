@@ -22,7 +22,7 @@ export default function OrderPage(){
   // comportements
   const handleAddProduct = (newProduct) => {
     // 1. copie du tableau
-    const menuCopy = [...menu]
+    const menuCopy = JSON.parse(JSON.stringify(menu))
     // 2. manip de la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy]
     // 3. update du tableau via le setter dédié
@@ -31,12 +31,24 @@ export default function OrderPage(){
 
   const handleDelete = (idProductToDelete) => { 
     // 1. copie du state
-    const menuCopy = [...menu]
+    const menuCopy = JSON.parse(JSON.stringify(menu))
     // 2. manip de la copie du state
     const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
     // 3. update du state
     setMenu(menuUpdated)
    } 
+
+  const handleEdit = (productBeingEdited) => { 
+    // 1. copie du state en mode deep clone
+    const menuCopy = JSON.parse(JSON.stringify(menu))
+    // 2. manip de la copie du state
+    const indexOfProductToEdit = menu.findIndex(
+      (menuProduct) => menuProduct.id === productBeingEdited.id)  
+
+      menuCopy[indexOfProductToEdit] = productBeingEdited
+    // 3. update du state via le setter dédié
+    setMenu(menuCopy)
+  } 
 
   const resetMenu = () => { 
     setMenu(fakeMenu.MEDIUM)
@@ -57,6 +69,7 @@ export default function OrderPage(){
     setNewProduct,
     productSelected,
     setProductSelected,
+    handleEdit,
   }
 
   // affichage
@@ -89,4 +102,3 @@ const OrderPageStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
   }
 `;
-
