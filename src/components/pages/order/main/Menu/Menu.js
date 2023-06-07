@@ -12,9 +12,14 @@ const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 export default function Menu() {
 
   // states parents (il ne s'agit pas de son state)
-  const { menu, isCollapsed, isModeAdmin, handleDelete, resetMenu } = useContext(OrderContext)
+  const { menu, isCollapsed, isModeAdmin, handleDelete, resetMenu,  setProductSelected } = useContext(OrderContext)
 
   // comportements
+
+  const handleClick = (idProductClicked) => {
+    const productSelected = menu.find((product) => product.id === idProductClicked)
+    setProductSelected(productSelected)
+  }
 
   // affichage 
   if (menu.length === 0) {
@@ -34,6 +39,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
+            onClick={() => handleClick(id)}
           />
         )
       })}
