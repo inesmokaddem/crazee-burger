@@ -30,6 +30,7 @@ export default function Products({ title, imageSource, leftDescription, hasDelet
 const CardStyled = styled.div`
   ${(props) => props.isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
+  height: 330px;
   .card {  
     background: ${theme.colors.white};
     box-sizing: border-box;
