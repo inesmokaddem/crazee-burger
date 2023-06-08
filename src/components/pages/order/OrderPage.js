@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
@@ -14,10 +14,11 @@ export default function OrderPage(){
   // state 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setcurrentTabSelected] = useState("add")
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
 
 
   // comportements
@@ -61,7 +62,7 @@ export default function OrderPage(){
     isCollapsed,
     setIsCollapsed,
     currentTabSelected,
-    setcurrentTabSelected,
+    setCurrentTabSelected,
     menu,
     handleAddProduct,
     handleDelete,
@@ -71,6 +72,7 @@ export default function OrderPage(){
     productSelected,
     setProductSelected,
     handleEdit,
+    titleEditRef,
   }
 
   // affichage

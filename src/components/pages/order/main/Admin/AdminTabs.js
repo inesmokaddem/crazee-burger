@@ -8,11 +8,11 @@ import { tabsConfig } from "./tabsConfig";
 
 export default function AdminTabs() {
   // state
-  const {isCollapsed, setIsCollapsed, currentTabSelected, setcurrentTabSelected} = useContext(OrderContext)
+  const {isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected} = useContext(OrderContext)
   // comportements 
   const selectTab = (tabSelected) => {
     setIsCollapsed(false)
-    setcurrentTabSelected(tabSelected)
+    setCurrentTabSelected(tabSelected)
   }
 
   const tabs = tabsConfig
