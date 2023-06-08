@@ -4,6 +4,7 @@ import ImagePreview from "./ImagePreview"
 import TextInput from "../../../../../reusable-ui/TextInput"
 import styled from "styled-components";
 import { getInputTextsConfig } from "./inputTextConfig"
+import { theme } from "../../../../../../theme";
 
 
 
@@ -36,7 +37,12 @@ export default function EditProductForm() {
         )}
       </div>
 
-      <div className="submit"></div>
+      <div className="submit">
+        <span className="sentence">
+          Cliquer sur un produit du menu pour le modifier{" "}
+          <span className="live-update">en temps réel</span>
+        </span>
+      </div>
     </EditProductFormStyled>
   )
 }
@@ -62,5 +68,14 @@ const EditProductFormStyled = styled.form`
     display: flex;
     align-items: center;
     position: relative;
+    top: 3px;
+    
+    .sentence {
+      color: ${theme.colors.primary};
+      font-size: ${theme.fonts.size.SM};
+      .live-update {
+        text-decoration: underline;
+      }
+    }
   } 
 `
