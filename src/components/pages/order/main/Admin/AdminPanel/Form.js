@@ -1,58 +1,67 @@
 import React from 'react'
 import styled from 'styled-components'
-import SubmitMessage from './SubmitMessage'
 import { getInputTextsConfig } from './inputTextConfig'
 import ImagePreview from './ImagePreview'
 import TextInput from '../../../../../reusable-ui/TextInput'
-import Button from '../../../../../reusable-ui/Button'
 
-export default function Form({ product, onSubmit, onChange, isSubmitted }) { // raised the event 
+const Form = React.forwardRef(({ product, onSubmit, onChange, QUELQUECHOSE }, ref) => {
+  // state (vide)
 
-    const inputTexts = getInputTextsConfig(product)
+  // comportements (vide)
 
-    return (
-        <FormStyled onSubmit={onSubmit}>
-        <ImagePreview imageSource={product.imageSource} title={product.title}/>
-        <div className="input-fields">
-        {inputTexts.map((input) => 
-            <TextInput key={input.id} {...input} onChange={onChange} variant="minimalist" />    
-        )}
-        </div>
+  const inputTexts = getInputTextsConfig(product)
 
-        <div className="submit">
-        <Button
-            variant="success"
-            label="Ajouter un nouveau produit au menu"
-            className="submit-button"
-        />
-        {isSubmitted && (
-            <SubmitMessage />
-        )}
-        </div>
+  // affichage
+  return (
+    <FormStyled onSubmit={onSubmit}>
+      <ImagePreview imageSource={product.imageSource} title={product.title} />
+      <div className="input-fields">
+        {inputTexts.map((input) => (
+          <TextInput
+            {...input}
+            key={input.id}
+            onChange={onChange}
+            variant="minimalist"
+            ref={ref && input.name === "title" ? ref : null}
+          />
+        ))}
+      </div>
+      <div className="submit">{QUELQUECHOSE}</div>
     </FormStyled>
-    )
-}
+  )
+})
+
+export default Form
 
 const FormStyled = styled.form`
-  height: 100%;
-  width: 70%;
-
+  /* border: 2px solid black; */
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  width: 70%;
   grid-column-gap: 20px;
   grid-row-gap: 8px;
 
   .input-fields {
+    /* background: blue; */
     grid-area: 1 / 2 / -2 / 3;
+
     display: grid;
-    row-gap: 8px;
+    grid-row-gap: 8px;
   }
 
   .submit {
-    grid-area: 4 / 2 / -1 / -1;
+    /* background: green; */
+    grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
     position: relative;
-  } 
+    top: 3px;
+
+    .submit-button {
+      /* width: 50%; */
+      height: 100%;
+    }
+  }
 `
