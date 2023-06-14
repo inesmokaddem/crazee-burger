@@ -4,7 +4,7 @@ import { getInputTextsConfig } from './inputTextConfig'
 import ImagePreview from './ImagePreview'
 import TextInput from '../../../../../reusable-ui/TextInput'
 
-const Form = React.forwardRef(({ product, onSubmit, onChange, QUELQUECHOSE }, ref) => {
+const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) => {
   // state (vide)
 
   // comportements (vide)
@@ -26,7 +26,7 @@ const Form = React.forwardRef(({ product, onSubmit, onChange, QUELQUECHOSE }, re
           />
         ))}
       </div>
-      <div className="submit">{QUELQUECHOSE}</div>
+      <div className="submit">{children}</div>
     </FormStyled>
   )
 })
