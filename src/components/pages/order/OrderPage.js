@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
-import Main from './Main/Main';
+import MainRightSide from './Main/MainRightSide/MainRightSide';
 import Navbar from './navbar/Navbar';
 import { fakeMenu } from "../../../data/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
@@ -92,7 +92,7 @@ export default function OrderPage(){
       <OrderPageStyled>
         <div className='container'>
           <Navbar/>
-          <Main/>
+          <MainRightSide/>
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>

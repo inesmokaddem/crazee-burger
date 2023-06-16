@@ -1,13 +1,13 @@
 import { useContext } from "react"
 import styled from "styled-components"
-import { formatPrice } from "../../../../../utils/maths"
-import Card from "../../../../reusable-ui/Card"
-import OrderContext from "../../../../../context/OrderContext"
-import { theme } from "../../../../../theme"
+import { formatPrice } from "../../../../../../utils/maths"
+import Card from "../../../../../reusable-ui/Card"
+import OrderContext from "../../../../../../context/OrderContext"
+import { theme } from "../../../../../../theme"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsSelected } from "./helper"
-import { EMPTY_PRODUCT } from "../../../../../enums/product"
+import { EMPTY_PRODUCT } from "../../../../../../enums/product"
 
 const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
