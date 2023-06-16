@@ -4,6 +4,7 @@ import OrderContext from "../../../../context/OrderContext";
 import { theme } from "../../../../theme";
 import Admin from "./Admin/Admin";
 import Menu from "./Menu/Menu";
+import Basket from "../Basket/Basket"
 
 export default function Main() {
 
@@ -11,6 +12,7 @@ export default function Main() {
   return (
     <MainStyled>
       {/* <div className="basket">basket</div> */}
+      <Basket />
       <div className="menu-admin-bloc">
         <Menu/>
         {isModeAdmin && <Admin/>}
