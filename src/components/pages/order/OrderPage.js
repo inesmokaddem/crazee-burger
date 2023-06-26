@@ -22,7 +22,7 @@ export default function OrderPage(){
 
 
   // comportements
-  const handleAddProduct = (newProduct) => {
+  const handleAddMenu = (newProduct) => {
     // 1. copie du tableau
     const menuCopy = deepClone(menu)
     // 2. manip de la copie du tableau
@@ -64,7 +64,7 @@ export default function OrderPage(){
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    handleAddProduct,
+    handleAddMenu,
     handleDeleteMenu,
     resetMenu,
     newProduct,
