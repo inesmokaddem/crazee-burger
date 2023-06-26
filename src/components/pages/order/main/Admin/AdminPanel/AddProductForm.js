@@ -5,7 +5,7 @@ import Form from "./Form"
 import SubmitButton from "./SubmitButton"
 
 export default function AddProductForm() {
-  const { handleAddProduct, newProduct, setNewProduct } = useContext(OrderContext)
+  const { handleAddMenu, newProduct, setNewProduct } = useContext(OrderContext)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (event) => {
@@ -24,7 +24,7 @@ export default function AddProductForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    handleAddProduct({
+    handleAddMenu({
       ...newProduct,
       id: crypto.randomUUID(),
     })
