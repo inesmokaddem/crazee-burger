@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
-import Main from './main/Main';
+import Main from './Main/Main';
 import Navbar from './navbar/Navbar';
 import { fakeMenu } from "../../../data/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
@@ -31,7 +31,7 @@ export default function OrderPage(){
     setMenu(menuUpdated)
   }
 
-  const handleDelete = (idProductToDelete) => { 
+  const handleDeleteMenu = (idProductToDelete) => { 
     // 1. copie du state
     const menuCopy = deepClone(menu)
     // 2. manip de la copie du state
@@ -65,7 +65,7 @@ export default function OrderPage(){
     setCurrentTabSelected,
     menu,
     handleAddProduct,
-    handleDelete,
+    handleDeleteMenu,
     resetMenu,
     newProduct,
     setNewProduct,
