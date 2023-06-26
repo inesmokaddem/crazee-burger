@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
-import Main from './main/Main';
+import Main from './Main/Main';
 import Navbar from './navbar/Navbar';
 import { fakeMenu } from "../../../data/fakeMenu";
-import { EMPTY_PRODUCT } from './main/Admin/AdminPanel/AddProductForm';
+import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from '../../../utils/array';
 
 
 
@@ -13,32 +14,56 @@ export default function OrderPage(){
   // state 
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false)
-  const [currentTabSelected, setcurrentTabSelected] = useState("add")
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [menu, setMenu] = useState(fakeMenu.MEDIUM)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  const titleEditRef = useRef()
 
 
   // comportements
-  const handleAddProduct = (newProduct) => {
+  const handleAddMenu = (newProduct) => {
     // 1. copie du tableau
-    const menuCopy = [...menu]
+    const menuCopy = deepClone(menu)
     // 2. manip de la copie du tableau
     const menuUpdated = [newProduct, ...menuCopy]
     // 3. update du tableau via le setter dédié
     setMenu(menuUpdated)
   }
 
-  const handleDelete = (idProductToDelete) => { 
+  const handleDeleteMenu = (idProductToDelete) => { 
     // 1. copie du state
-    const menuCopy = [...menu]
+    const menuCopy = deepClone(menu)
     // 2. manip de la copie du state
     const menuUpdated = menuCopy.filter((product) => product.id !== idProductToDelete)
     // 3. update du state
     setMenu(menuUpdated)
    } 
 
+  const handleEdit = (productBeingEdited) => { 
+    // 1. copie du state en mode deep clone
+    const menuCopy = deepClone(menu)
+    // 2. manip de la copie du state
+    const indexOfProductToEdit = menu.findIndex(
+      (menuProduct) => menuProduct.id === productBeingEdited.id)  
+
+      menuCopy[indexOfProductToEdit] = productBeingEdited
+    // 3. update du state via le setter dédié
+    setMenu(menuCopy)
+  } 
+
   const resetMenu = () => { 
     setMenu(fakeMenu.MEDIUM)
+  }
+
+  const handleSelectedCard = async (idProductClicked) => {
+    if (!isModeAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
   }
 
   const orderContextValue = {
@@ -47,13 +72,18 @@ export default function OrderPage(){
     isCollapsed,
     setIsCollapsed,
     currentTabSelected,
-    setcurrentTabSelected,
+    setCurrentTabSelected,
     menu,
-    handleAddProduct,
-    handleDelete,
+    handleAddMenu,
+    handleDeleteMenu,
     resetMenu,
     newProduct,
     setNewProduct,
+    productSelected,
+    setProductSelected,
+    handleEdit,
+    titleEditRef,
+    handleSelectedCard,
   }
 
   // affichage
@@ -86,4 +116,3 @@ const OrderPageStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
   }
 `;
-

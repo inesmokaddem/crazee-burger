@@ -1,21 +1,19 @@
+import React from "react"
 import styled, { css } from "styled-components"
 import { theme } from "../../theme"
 
-export default function TextInput({
-  onChange,
-  Icon,
-  className,
-  variant = "normal",
-  ...extraProps
-}) {
-  return (
-    <TextInputStyled className={className} variant={variant}>
-      {Icon && <div className="icon">{Icon}</div>}
-      <input onChange={onChange} type="text" {...extraProps} />
-    </TextInputStyled>
-  )
-}
+const TextInput = React.forwardRef(
+  ({ onChange, Icon, className, variant = "normal", ...extraProps }, ref) => {
+    return (
+      <TextInputStyled className={className} variant={variant}>
+        {Icon &&  <div className="icon">{Icon}</div>}
+        <input ref={ref} onChange={onChange} type="text" {...extraProps} />
+      </TextInputStyled>
+    )
+  }
+)
 
+export default TextInput
 const TextInputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
@@ -24,7 +22,7 @@ const TextInputStyled = styled.div`
   .icon {
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 8px;
-    display: flex; // to center icon vertically
+    display: flex; 
   }
 
   input {
@@ -36,10 +34,7 @@ const TextInputStyled = styled.div`
       color: ${theme.colors.greyMedium};
     }
   }
-  /* ${(props) => {
-    if (props.variant === "normal") return normalStyle
-    if (props.variant === "minimalist") return minimalistStyle
-  }} */
+
   ${({ variant }) => extraStyle[variant]}
 `
 

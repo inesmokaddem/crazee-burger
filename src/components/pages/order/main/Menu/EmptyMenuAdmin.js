@@ -24,7 +24,7 @@ const EmptyMenuAdminStyled = styled.div`
   .title,
   .description {
     text-align: center;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.families.stylish};
     color: ${theme.colors.greyBlue};
   }
 

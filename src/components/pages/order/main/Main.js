@@ -7,7 +7,7 @@ import Menu from "./Menu/Menu";
 
 export default function Main() {
 
-  const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext);
+  const {isModeAdmin} = useContext(OrderContext);
   return (
     <MainStyled>
       {/* <div className="basket">basket</div> */}
