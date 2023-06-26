@@ -6,7 +6,7 @@ import OrderContext from "../../../../../context/OrderContext"
 import { theme } from "../../../../../theme"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
-import { checkIfProductIsClicked } from "./helper"
+import { checkIfProductIsSelected } from "./helper"
 import { EMPTY_PRODUCT } from "../../../../../enums/product"
 
 const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
@@ -64,7 +64,7 @@ export default function Menu() {
             onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
-            isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            isSelected={checkIfProductIsSelected(id, productSelected.id)}
           />
         )
       })}

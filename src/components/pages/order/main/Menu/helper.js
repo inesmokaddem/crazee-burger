@@ -1,3 +1,3 @@
-export const checkIfProductIsClicked  = (idProductInMenu, idProductClickedOn) => { 
+export const checkIfProductIsSelected  = (idProductInMenu, idProductClickedOn) => { 
     return idProductInMenu === idProductClickedOn
    }
