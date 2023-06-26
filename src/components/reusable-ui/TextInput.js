@@ -6,7 +6,7 @@ const TextInput = React.forwardRef(
   ({ onChange, Icon, className, variant = "normal", ...extraProps }, ref) => {
     return (
       <TextInputStyled className={className} variant={variant}>
-        <div className="icon">{Icon && Icon}</div>
+        {Icon &&  <div className="icon">{Icon}</div>}
         <input ref={ref} onChange={onChange} type="text" {...extraProps} />
       </TextInputStyled>
     )
