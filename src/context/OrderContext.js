@@ -18,6 +18,8 @@ export default createContext({
     handleEdit: () => {},
     resetMenu: () => {},
 
+    handleSelectedCard: () => {},
+
     newProduct: {},
     setNewProduct: () => {},
 

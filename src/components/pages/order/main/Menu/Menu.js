@@ -22,23 +22,12 @@ export default function Menu() {
     resetMenu, 
     productSelected, 
     setProductSelected, 
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditRef,
+    handleSelectedCard,
   } = useContext(OrderContext)
 
   // comportements
 
-  // comportements (gestionnaires d'événement ou "event handlers")
-  const handleClick = async (idProductClicked) => {
-    if (!isModeAdmin) return
-
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = menu.find((product) => product.id === idProductClicked)
-    await setProductSelected(productClickedOn)
-    titleEditRef.current.focus()
-  }
+  
   // affichage 
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />
@@ -49,7 +38,6 @@ export default function Menu() {
     event.stopPropagation()
     handleDeleteMenu(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-    titleEditRef.current.focus()
   }
   return (
     <MenuStyled className={isCollapsed ? "" : "admin-open"}>
@@ -62,7 +50,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleClick(id)}
+            onClick={() => handleSelectedCard(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsSelected(id, productSelected.id)}
           />

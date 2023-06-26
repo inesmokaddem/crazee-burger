@@ -56,6 +56,16 @@ export default function OrderPage(){
     setMenu(fakeMenu.MEDIUM)
   }
 
+  const handleSelectedCard = async (idProductClicked) => {
+    if (!isModeAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -73,6 +83,7 @@ export default function OrderPage(){
     setProductSelected,
     handleEdit,
     titleEditRef,
+    handleSelectedCard,
   }
 
   // affichage
