@@ -25,6 +25,8 @@ const BasketStyled = styled.div`
 
   .body {
     flex: 1;
+    box-shadow: ${theme.shadows.basket};
+    background-color: ${theme.colors.background_white};
   }
 
   .footer {
