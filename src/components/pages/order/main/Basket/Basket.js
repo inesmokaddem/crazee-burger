@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme';
-import Header from '../../../../reusable-ui/Header';
 import Total from './Total';
 import Footer from './Footer';
 import { formatPrice } from '../../../../../utils/maths';
@@ -11,9 +10,7 @@ export default function Basket() {
     <BasketStyled>
         <Total amountToPay={formatPrice(0)}/>
         <div className='body'>body</div>
-        <Header>
-          <Footer/>
-        </Header>
+        <Footer/>
     </BasketStyled>
   )
 }
