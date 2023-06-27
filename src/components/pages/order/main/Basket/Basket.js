@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../../theme';
+import Header from '../../../../reusable-ui/Header';
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <div className='head'>head</div>
+      <Header>head</Header>
       <div className='body'>body</div>
-      <div className='footer'>footer</div>
+      <Header>footer</Header>
 
     </BasketStyled>
   )
@@ -18,20 +19,9 @@ const BasketStyled = styled.div`
   display: flex;
   flex-direction: column;
 
-  .head {
-    height: 70px;
-    background-color: ${theme.colors.background_dark};
-  }
-
   .body {
     flex: 1;
     box-shadow: ${theme.shadows.basket};
     background-color: ${theme.colors.background_white};
-  }
-
-  .footer {
-    background-color: ${theme.colors.background_dark};
-    height: 70px;
-
   }
 `;
