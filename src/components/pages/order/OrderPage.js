@@ -2,12 +2,11 @@ import { useRef, useState } from 'react';
 import styled from 'styled-components';
 import OrderContext from '../../../context/OrderContext';
 import { theme } from '../../../theme';
-import MainRightSide from './Main/MainRightSide/MainRightSide';
 import Navbar from './navbar/Navbar';
 import { fakeMenu } from "../../../data/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { deepClone } from '../../../utils/array';
-
+import Main from './Main/Main';
 
 
 export default function OrderPage(){
@@ -92,7 +91,7 @@ export default function OrderPage(){
       <OrderPageStyled>
         <div className='container'>
           <Navbar/>
-          <MainRightSide/>
+          <Main/>
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>
