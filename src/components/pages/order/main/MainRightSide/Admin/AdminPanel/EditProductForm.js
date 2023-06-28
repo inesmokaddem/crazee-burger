@@ -7,7 +7,7 @@ import Form from "./Form";
 
 export default function EditProductForm() {
   // state
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
+  const { productSelected, setProductSelected, handleEditMenu, titleEditRef } = useContext(OrderContext)
 
   // comportements (gestionnaires d'événement ou "event handlers")
   const handleChange = (event) => {
@@ -19,7 +19,7 @@ export default function EditProductForm() {
     }
 
     setProductSelected(productBeingUpdated) // cette ligne update le formulaire
-    handleEdit(productBeingUpdated, event) // cette ligne update le menu
+    handleEditMenu(productBeingUpdated, event) // cette ligne update le menu
   }
 
   // affichage
