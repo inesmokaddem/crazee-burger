@@ -1,12 +1,13 @@
-import { useContext, useState } from "react"
-import OrderContext from "../../../../../../context/OrderContext"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product"
+import { useContext } from "react"
+import OrderContext from "../../../../../../../context/OrderContext"
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
 import Form from "./Form"
 import SubmitButton from "./SubmitButton"
+import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage"
 
 export default function AddProductForm() {
   const { handleAddMenu, newProduct, setNewProduct } = useContext(OrderContext)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const { isSubmitted, displaySuccessMessage } = useSuccessMessage(3000)
 
   const handleChange = (event) => {
     setNewProduct({
@@ -15,21 +16,17 @@ export default function AddProductForm() {
     })
   }
 
-  const displaySuccess = () => {
-    setTimeout(() => {
-      setIsSubmitted(false)
-    }, 2000)
-    setNewProduct(EMPTY_PRODUCT)
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
-    handleAddMenu({
+    const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
-    })
-    setIsSubmitted(true);
-    displaySuccess();
+    }
+
+    handleAddMenu(newProductToAdd)
+    setNewProduct(EMPTY_PRODUCT)
+
+    displaySuccessMessage()
   }
 
   return (

@@ -1,29 +1,19 @@
-import { useContext } from "react";
-import styled from "styled-components";
-import OrderContext from "../../../../context/OrderContext";
-import { theme } from "../../../../theme";
-import Admin from "./Admin/Admin";
-import Menu from "./Menu/Menu";
+import styled from "styled-components"
+import { theme } from "../../../../theme"
+import MainRightSide from "./MainRightSide/MainRightSide"
+import Basket from "../Main/Basket/Basket"
 
 export default function Main() {
-
-  const {isModeAdmin} = useContext(OrderContext);
   return (
     <MainStyled>
-      {/* <div className="basket">basket</div> */}
-      <div className="menu-admin-bloc">
-        <Menu/>
-        {isModeAdmin && <Admin/>}
-      </div>
-
+      <Basket />
+      <MainRightSide />
     </MainStyled>
-  ) 
-
-
+  )
 }
+
 const MainStyled = styled.div`
   background: ${theme.colors.background_white};
-  flex: 1;
   height: calc(95vh - 10vh);
 
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
@@ -32,19 +22,5 @@ const MainStyled = styled.div`
 
   display: grid;
   grid-template-columns: 25% 1fr;
-  grid-template-columns: 1fr;
-
-  /* overflow-y: scroll; */
-
-  .basket {
-    border: 1px solid red;
-  }
-  .menu-admin-bloc {
-    overflow-y: hidden;
-    display: grid;
-    position: relative;
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  }
-
-`;
+  overflow: hidden;
+`
