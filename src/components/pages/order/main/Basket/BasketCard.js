@@ -92,7 +92,7 @@ const BasketCardStyled = styled.div`
         /* background: blue; */
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
-        font-family: ${theme.fonts.families.stylish};
+        font-family: ${theme.fonts.families.openSans};
         /* color: ${theme.colors.white}; */
       }
     }
