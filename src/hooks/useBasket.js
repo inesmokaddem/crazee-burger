@@ -24,9 +24,22 @@ export const useBasket = () => {
 
       //3. update du state
       setBasket(basketUpdated)
+    } else {
+      // 2ème cas : le produit n'est déjà dans le basket
+      const indexOfBasketProductToIncrement = basket.findIndex(
+        (basketProduct) => basketProduct.id === productToAdd.id
+      )
+
+      // console.log("indexOfBasketProductToIncrement: ", indexOfBasketProductToIncrement)
+      console.log(
+        "basket[indexOfBasketProductToIncrement]: ",
+        basketCopy[indexOfBasketProductToIncrement]
+      )
+      basketCopy[indexOfBasketProductToIncrement].quantity += 1
+      //3. update du state
+      setBasket(basketCopy)
     }
 
-    // 2ème cas : le produit n'est déjà dans le basket
   }
 
   return { basket, handleAddToBasket }
