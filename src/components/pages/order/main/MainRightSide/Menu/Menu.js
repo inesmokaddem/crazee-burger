@@ -7,10 +7,10 @@ import { theme } from "../../../../../../theme"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsSelected } from "./helper"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
 import { find } from "../../../../../../utils/array"
 
-const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
+// const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
 
@@ -55,7 +55,7 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : DEFAULT_PRODUCT_IMAGE}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
