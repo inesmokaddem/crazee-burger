@@ -73,7 +73,7 @@ const BasketCardStyled = styled.div`
         display: flex;
         align-items: center;
         /* background: yellow; */
-        font-family: ${theme.fonts.family.stylish};
+        font-family: ${theme.fonts.families.stylish};
         font-size: ${theme.fonts.size.P3};
         line-height: 32px;
         font-weight: ${theme.fonts.weights.bold};
@@ -92,7 +92,7 @@ const BasketCardStyled = styled.div`
         /* background: blue; */
         font-size: ${theme.fonts.size.SM};
         font-weight: ${theme.fonts.weights.medium};
-        font-family: ${theme.fonts.family.openSans};
+        font-family: ${theme.fonts.families.stylish};
         /* color: ${theme.colors.white}; */
       }
     }

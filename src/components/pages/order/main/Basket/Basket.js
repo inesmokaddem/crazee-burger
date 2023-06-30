@@ -6,6 +6,7 @@ import { formatPrice } from '../../../../../utils/maths';
 import EmptyBasket from './EmptyBasket';
 import OrderContext from '../../../../../context/OrderContext';
 import BasketProducts from './BasketProducts';
+import { theme } from '../../../../../theme';
 
 export default function Basket() {
   const {basket} = useContext(OrderContext)
@@ -14,7 +15,7 @@ export default function Basket() {
   return (
     <BasketStyled>
         <Total amountToPay={formatPrice(0)}/>
-        {isBasketEmpty ? <EmptyBasket/> : <BasketProducts/>}
+        {isBasketEmpty ? <EmptyBasket/> : <BasketProducts basket={basket}/>}
         {/* <EmptyBasket basket={basket}/> */}
         <Footer/>
     </BasketStyled>
@@ -22,7 +23,21 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-  background-color: pink;
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.basket};
   display: flex;
   flex-direction: column;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  height: 85vh;
+
+  .head {
+    position: sticky;
+    top: 0;
+  }
+
+  .footer {
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    position: sticky;
+    bottom: 0;
+  }
 `;
