@@ -8,6 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsSelected } from "./helper"
 import { EMPTY_PRODUCT } from "../../../../../../enums/product"
+import { find } from "../../../../../../utils/array"
 
 const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
@@ -23,6 +24,7 @@ export default function Menu() {
     productSelected, 
     setProductSelected, 
     handleSelectedCard,
+    handleAddToBasket,
   } = useContext(OrderContext)
 
   // comportements
@@ -39,6 +41,13 @@ export default function Menu() {
     handleDeleteMenu(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
+
+  const handleAddButton = (event, idProductToAdd) =>  {
+    event.stopPropagation()
+    const productToAdd = find(idProductToAdd, menu)
+    handleAddToBasket(productToAdd)
+  }
+
   return (
     <MenuStyled className={isCollapsed ? "" : "admin-open"}>
       {menu.map(({ id, title, imageSource, price }) => {
@@ -53,6 +62,7 @@ export default function Menu() {
             onClick={() => handleSelectedCard(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsSelected(id, productSelected.id)}
+            onAdd={(event) => handleAddButton(event,id)}
           />
         )
       })}

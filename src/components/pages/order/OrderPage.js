@@ -18,7 +18,7 @@ export default function OrderPage(){
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const {menu, handleAddMenu, handleDeleteMenu, handleEditMenu, resetMenu} = useMenu()
-  const {basket} = useBasket()
+  const {basket, handleAddToBasket} = useBasket()
 
 
 
@@ -30,6 +30,7 @@ export default function OrderPage(){
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
     const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    // const productClickedOn = find(idProductClicked, menu)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -53,6 +54,7 @@ export default function OrderPage(){
     titleEditRef,
     handleSelectedCard,
     basket,
+    handleAddToBasket,
   }
 
   // affichage
