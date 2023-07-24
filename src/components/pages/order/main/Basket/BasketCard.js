@@ -11,10 +11,11 @@ export default function BasketCard({
   imageSource, 
   className,
   isModeAdmin, 
+  onDelete,
 }) {
   return (
     <BasketCardStyled className={className} isModeAdmin={isModeAdmin} >
-      <div className="delete-button">
+      <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
       <div className="image">
@@ -36,6 +37,7 @@ export default function BasketCard({
 }
 
 const BasketCardStyled = styled.div`
+  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
   /* border: 1px solid red; */
   box-sizing: border-box;
   height: 86px;
@@ -63,6 +65,7 @@ const BasketCardStyled = styled.div`
   }
 
   .text-info {
+    user-select: none;
     box-sizing: border-box;
     /* background: green; */
     /* border: 1px solid green; */
@@ -149,10 +152,8 @@ const BasketCardStyled = styled.div`
 
       /* behaviour on delete-button hover */
       :hover {
-        text-decoration: underline;
-
         .icon {
-          color: ${theme.colors.black};
+          color: ${theme.colors.dark};
         }
       }
     }
