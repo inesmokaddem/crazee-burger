@@ -24,15 +24,9 @@ export default function OrderPage(){
 
  
 
-  const handleSelectedCard = async (idProductClicked) => {
+  const handleProductSelected = async (idProductClicked) => {
     if (!isModeAdmin) return
-
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = menu.find((product) => product.id === idProductClicked)
-    // const productClickedOn = find(idProductClicked, menu)
-    await setProductSelected(productClickedOn)
-    titleEditRef.current.focus()
+    handleProductSelected(idProductClicked)
   }
 
   const orderContextValue = {
@@ -52,10 +46,11 @@ export default function OrderPage(){
     setProductSelected,
     handleEditMenu,
     titleEditRef,
-    handleSelectedCard,
+    // handleSelectedCard,
     basket,
     handleAddToBasket,
     handleDeleteBasketProduct,
+    handleProductSelected,
   }
 
   // affichage

@@ -12,9 +12,10 @@ export default function BasketCard({
   className,
   isModeAdmin, 
   onDelete,
+  onClick,
 }) {
   return (
-    <BasketCardStyled className={className} isModeAdmin={isModeAdmin} >
+    <BasketCardStyled className={className} isModeAdmin={isModeAdmin} onClick={onClick} >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
