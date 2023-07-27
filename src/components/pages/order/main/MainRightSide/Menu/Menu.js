@@ -23,12 +23,25 @@ export default function Menu() {
     resetMenu, 
     productSelected, 
     setProductSelected, 
-    handleSelectedCard,
     handleAddToBasket,
     handleDeleteBasketProduct,
+
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
   } = useContext(OrderContext)
 
   // comportements
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    //const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    const productClickedOn = find(idProductClicked, menu)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
 
   
   // affichage 
@@ -61,7 +74,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleSelectedCard(id)}
+            onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsSelected(id, productSelected.id)}
             onAdd={(event) => handleAddButton(event,id)}
