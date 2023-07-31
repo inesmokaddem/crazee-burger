@@ -6,6 +6,7 @@ import Navbar from './navbar/Navbar';
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import Main from './Main/Main';
 import { useMenu } from '../../../hooks/useMenu';
+import { useBasket } from '../../../hooks/useBasket';
 
 
 export default function OrderPage(){
@@ -17,18 +18,15 @@ export default function OrderPage(){
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const {menu, handleAddMenu, handleDeleteMenu, handleEditMenu, resetMenu} = useMenu()
+  const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+
 
 
  
 
-  const handleSelectedCard = async (idProductClicked) => {
+  const handleProductSelected = async (idProductClicked) => {
     if (!isModeAdmin) return
-
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    const productClickedOn = menu.find((product) => product.id === idProductClicked)
-    await setProductSelected(productClickedOn)
-    titleEditRef.current.focus()
+    handleProductSelected(idProductClicked)
   }
 
   const orderContextValue = {
@@ -48,7 +46,11 @@ export default function OrderPage(){
     setProductSelected,
     handleEditMenu,
     titleEditRef,
-    handleSelectedCard,
+    // handleSelectedCard,
+    basket,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
+    handleProductSelected,
   }
 
   // affichage

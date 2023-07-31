@@ -7,9 +7,10 @@ import { theme } from "../../../../../../theme"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsSelected } from "./helper"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
+import { find } from "../../../../../../utils/array"
 
-const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
+// const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
 export default function Menu() {
 
@@ -22,10 +23,25 @@ export default function Menu() {
     resetMenu, 
     productSelected, 
     setProductSelected, 
-    handleSelectedCard,
+    handleAddToBasket,
+    handleDeleteBasketProduct,
+
+    setIsCollapsed,
+    setCurrentTabSelected,
+    titleEditRef,
   } = useContext(OrderContext)
 
   // comportements
+  const handleClick = async (idProductClicked) => {
+    if (!isModeAdmin) return
+
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    //const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    const productClickedOn = find(idProductClicked, menu)
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
 
   
   // affichage 
@@ -37,8 +53,16 @@ export default function Menu() {
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     handleDeleteMenu(idProductToDelete)
+    handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
+
+  const handleAddButton = (event, idProductToAdd) =>  {
+    event.stopPropagation()
+    const productToAdd = find(idProductToAdd, menu)
+    handleAddToBasket(productToAdd)
+  }
+
   return (
     <MenuStyled className={isCollapsed ? "" : "admin-open"}>
       {menu.map(({ id, title, imageSource, price }) => {
@@ -46,13 +70,14 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : DEFAULT_PRODUCT_IMAGE}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleSelectedCard(id)}
+            onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsSelected(id, productSelected.id)}
+            onAdd={(event) => handleAddButton(event,id)}
           />
         )
       })}
