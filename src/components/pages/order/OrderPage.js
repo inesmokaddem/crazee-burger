@@ -7,6 +7,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import Main from './Main/Main';
 import { useMenu } from '../../../hooks/useMenu';
 import { useBasket } from '../../../hooks/useBasket';
+import { findObjectById } from '../../../utils/array';
 
 
 export default function OrderPage(){
@@ -21,12 +22,12 @@ export default function OrderPage(){
   const {basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
 
 
-
- 
-
   const handleProductSelected = async (idProductClicked) => {
-    if (!isModeAdmin) return
-    handleProductSelected(idProductClicked)
+    const productClickedOn = findObjectById(idProductClicked, menu)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
   }
 
   const orderContextValue = {

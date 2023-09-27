@@ -8,7 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsSelected } from "./helper"
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
-import { findObjectById, isEmpty } from "../../../../../../utils/array"
+import { isEmpty } from "../../../../../../utils/array"
 
 // const DEFAULT_PRODUCT_IMAGE = "/images/coming-soon.png";
 
@@ -25,31 +25,10 @@ export default function Menu() {
     setProductSelected, 
     handleAddToBasket,
     handleDeleteBasketProduct,
-
-    setIsCollapsed,
-    setCurrentTabSelected,
-    titleEditRef,
+    handleProductSelected,
   } = useContext(OrderContext)
 
   // comportements
-  const handleClick = async (idProductClicked) => {
-    if (!isModeAdmin) return
-
-    await setIsCollapsed(false)
-    await setCurrentTabSelected("edit")
-    //const productClickedOn = menu.find((product) => product.id === idProductClicked)
-    const productClickedOn = findObjectById(idProductClicked, menu)
-    await setProductSelected(productClickedOn)
-    titleEditRef.current.focus()
-  }
-
-  
-  // affichage 
-  if (isEmpty(menu)) {
-    if (!isModeAdmin) return <EmptyMenuClient />
-    return <EmptyMenuAdmin onReset={resetMenu} />
-  }
-
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
     handleDeleteMenu(idProductToDelete)
@@ -60,6 +39,11 @@ export default function Menu() {
   const handleAddButton = (event, idProductToAdd) =>  {
     event.stopPropagation()
     handleAddToBasket(idProductToAdd)
+  }
+  // affichage 
+  if (isEmpty(menu)) {
+    if (!isModeAdmin) return <EmptyMenuClient />
+    return <EmptyMenuAdmin onReset={resetMenu} />
   }
 
   return (
@@ -73,7 +57,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
-            onClick={() => handleClick(id)}
+            onClick={isModeAdmin ? () => handleProductSelected(id) : null }
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsSelected(id, productSelected.id)}
             onAdd={(event) => handleAddButton(event,id)}
