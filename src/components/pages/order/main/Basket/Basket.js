@@ -7,13 +7,18 @@ import OrderContext from "../../../../../context/OrderContext"
 import BasketProducts from "./BasketProducts"
 import { theme } from "../../../../../theme"
 import { isEmpty } from "../../../../../utils/array"
+import { formatPrice, calculateSumToPay } from "../../../../../utils/maths" 
 
 export default function Basket() {
-  const { basket } = useContext(OrderContext)
+  const { basket, menu } = useContext(OrderContext)
+
+  // const isBasketEmpty = isEmpty(basket)
+
+  const sumToPay = calculateSumToPay(basket, menu)
 
   return (
     <BasketStyled>
-      <Total />
+      <Total amountToPay={formatPrice(sumToPay)}/>
       {isEmpty(basket) ? <EmptyBasket /> : <BasketProducts />}
       <Footer />
     </BasketStyled>
