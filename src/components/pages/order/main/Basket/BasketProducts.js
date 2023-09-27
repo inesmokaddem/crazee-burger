@@ -5,9 +5,10 @@ import { IMAGE_COMING_SOON } from "../../../../../enums/product"
 import BasketCard from "./BasketCard"
 import OrderContext from "../../../../../context/OrderContext"
 import { findObjectById } from "../../../../../utils/array"
+import { checkIfProductIsSelected } from "../MainRightSide/Menu/helper"
 
 export default function BasketProducts() {
-  const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected } = useContext(OrderContext)
+  const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected, productSelected } = useContext(OrderContext)
 
   const handleOnDelete = (event, id) => {
     event.stopPropagation()
@@ -27,6 +28,7 @@ export default function BasketProducts() {
               onDelete={(event) => handleOnDelete(event, basketProduct.id)}
               isClickable={isModeAdmin}
               onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null }
+              isSelected={checkIfProductIsSelected(basketProduct.id, productSelected.id)}
             />
           </div>
         )
